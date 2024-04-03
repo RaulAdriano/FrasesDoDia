@@ -2,10 +2,23 @@ package com.rauladrianoramos.frasesdodia;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
+    String[] frases = {
+            "Frase 01",
+            "Frase 02",
+            "Frase 03",
+            "Frase 04",
+            "Frase 05",
+            "Frase 06",
+            "Frase 07",
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,10 +27,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gerarFrase(View view) {
+        TextView texto = findViewById(R.id.textResultado);
+
+        int numeroAleatorio = new Random().nextInt(7); //0..6
+
+        String frase = frases[numeroAleatorio];
+
+        texto.setText(frase);
 
     }
 
     public void exibirTodas(View view) {
 
+        TextView texto = findViewById(R.id.textResultado);
+
+        String textoResultado = "";
+
+        for (String frase : frases) {
+            textoResultado = textoResultado.concat(frase).concat("\n");
+        }
+
+        texto.setText(textoResultado);
     }
 }
